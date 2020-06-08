@@ -8,7 +8,7 @@ namespace RobotsVDinosaurs
     {
         public string robotName;
         public int robotHealth;
-        public int powerLevel;
+        public int robotPowerLevel;
         public Weapon robotWeapon;
 
     }
