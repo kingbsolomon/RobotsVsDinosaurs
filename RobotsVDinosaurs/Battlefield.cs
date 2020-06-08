@@ -13,10 +13,7 @@ namespace RobotsVDinosaurs
 
         }
 
-        bool isAttackSuccessful()
-        {
-            if 
-        }
+        
 
         public void dinoAttackRobot()
         {

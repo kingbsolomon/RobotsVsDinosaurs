@@ -6,6 +6,7 @@ namespace RobotsVDinosaurs
 {
     class Herd
     {
+        //member variables
         int dinosaurOneHealth;
         int dinosaurTwoHealth;
         int dinosaurThreeHealth;
@@ -15,11 +16,12 @@ namespace RobotsVDinosaurs
         int dinosaurThreeAttack;
         public List<Dinosaur> dinoList;
         
-        public void setDinosaurAttributes()
+        //Methods
+        public void SetDinosaurAttributes()
         {
             Random rnd = new Random();
 
-            dinosaurOneHealth = rnd.Next(30, 50);
+            dinosaurOneHealth = rnd.Next(30, 40);
             dinosaurOneAttack = rnd.Next(5, 10);
 
             dinosaurTwoHealth = rnd.Next(50, 70);
@@ -29,30 +31,23 @@ namespace RobotsVDinosaurs
             dinosaurThreeAttack = rnd.Next(15, 25);
 
             dinosaurEnergyLevel = 100;
-
         }
 
-        void createHerd()
+        void CreateHerd()
         {
-            dinoList = new List<Dinosaur>();
-
-            Dinosaur littleFoot = new Dinosaur("Littlefoot", dinosaurOneHealth, dinosaurEnergyLevel, dinosaurOneAttack);
-            Dinosaur yoshi = new Dinosaur("Yoshi", dinosaurTwoHealth, dinosaurEnergyLevel, dinosaurTwoAttack);
-            Dinosaur godzilla = new Dinosaur("Godzilla", dinosaurThreeHealth, dinosaurEnergyLevel, dinosaurThreeAttack);
-
-            dinoList.Add(littleFoot);
-            dinoList.Add(yoshi);
-            dinoList.Add(godzilla);
-
-
+            dinoList = new List<Dinosaur>()
+            {
+            new Dinosaur("Littlefoot", dinosaurOneHealth, dinosaurEnergyLevel, dinosaurOneAttack),
+            new Dinosaur("Yoshi", dinosaurTwoHealth, dinosaurEnergyLevel, dinosaurTwoAttack),
+            new Dinosaur("Godzilla", dinosaurThreeHealth, dinosaurEnergyLevel, dinosaurThreeAttack)
+            };
         }
-
+        
+        //Constructor
         public Herd()
         {
-            setDinosaurAttributes();
-            createHerd();
-            
+            SetDinosaurAttributes();
+            CreateHerd();
         }
-
     }
 }

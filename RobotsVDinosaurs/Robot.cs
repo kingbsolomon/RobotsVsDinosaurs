@@ -22,5 +22,11 @@ namespace RobotsVDinosaurs
             this.robotWeapon = robotWeapon;
         }
 
+        //Methods
+        public void RobotAttack(Dinosaur dinosaur)
+        {
+            dinosaur.dinosaurHealth -= robotPowerLevel;
+        }
+
     }
 }

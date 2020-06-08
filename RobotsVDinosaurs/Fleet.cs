@@ -8,7 +8,7 @@ namespace RobotsVDinosaurs
 
     class Fleet
     {
-
+        //member variables
         int robotOneHealth;
         int robotTwoHealth;
         int robotThreeHealth;
@@ -20,66 +20,49 @@ namespace RobotsVDinosaurs
         string weaponName2;
         string weaponName3;
         public List<Robot> robotList;
-        public void setRobotAttributes()
-        {
-            Random rnd = new Random();
+        Random rnd = new Random();
 
-            robotOneHealth = rnd.Next(30, 50);
+        //Methods
+        public void SetRobotAttributes()
+        {
+            robotOneHealth = rnd.Next(30, 40);
             robotTwoHealth = rnd.Next(50, 70);
             robotThreeHealth = rnd.Next(80, 100);
-            
             robotPowerLevel = 100;
         }
 
-        public void setRobotWeapon()
+        public void SetRobotsWeapon()
         {
-            Random rnd = new Random();
             List<string> weapon = new List<string>{
                 "Particle Beam Cannon","Portal Ripper","Atomic Annie","Queller of the Sky",
                 "Corroded Six Shooter","Klingon Disrupter","Steampunk Blaster" };
 
-            int weaponOneInt = rnd.Next(weapon.Count);
-            weaponName1 = weapon[weaponOneInt];
+            weaponName1 = weapon[rnd.Next(weapon.Count)];
             robotOneAttack = rnd.Next(5, 10);
 
-            int weaponTwoInt = rnd.Next(weapon.Count);
-            weaponName2 = weapon[weaponTwoInt];
-            robotTwoAttack = rnd.Next(10,15);
+            weaponName2 = weapon[rnd.Next(weapon.Count)];
+            robotTwoAttack = rnd.Next(10, 15);
 
-            int weaponThreeInt = rnd.Next(weapon.Count);
-            weaponName3 = weapon[weaponThreeInt];
+            weaponName3 = weapon[rnd.Next(weapon.Count)];
             robotThreeAttack = rnd.Next(15, 25);
-
         }
 
-        public void createFleet()
+        public void CreateFleet()
         {
-            Weapon wpn1 = new Weapon(weaponName1, robotOneAttack);
-            Robot r2d2 = new Robot("R2D2", robotOneHealth, robotPowerLevel, wpn1);
-
-            Weapon wpn2 = new Weapon(weaponName2, robotTwoAttack);
-            Robot bender = new Robot("Bender", robotTwoHealth, robotPowerLevel, wpn2);
-
-            Weapon wpn3 = new Weapon(weaponName3, robotThreeAttack);
-            Robot optimusPrime = new Robot("Optimus Prime", robotThreeHealth, robotPowerLevel, wpn3);
-
-            robotList = new List<Robot>();
-            robotList.Add(r2d2);
-            robotList.Add(bender);
-            robotList.Add(optimusPrime);
+            robotList = new List<Robot>() 
+            { 
+                new Robot("R2D2", robotOneHealth, robotPowerLevel, new Weapon(weaponName1, robotOneAttack)),
+                new Robot("Bender", robotTwoHealth, robotPowerLevel, new Weapon(weaponName2, robotTwoAttack)),
+                new Robot("Optimus Prime", robotThreeHealth, robotPowerLevel, new Weapon(weaponName3, robotThreeAttack))
+            };
         }
 
+        //Constructor
         public Fleet()
         {
-            setRobotAttributes();
-            setRobotWeapon();
-            createFleet();
-
+            SetRobotAttributes();
+            SetRobotsWeapon();
+            CreateFleet();
         }
-
-
-
-
-
     }
 }
