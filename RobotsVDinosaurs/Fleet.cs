@@ -16,7 +16,9 @@ namespace RobotsVDinosaurs
         public int robotOneAttack;
         public int robotTwoAttack;
         public int robotThreeAttack;
-        public string WeaponName;
+        public string weaponName1;
+        public string weaponName2;
+        public string weaponName3;
         public void setRobotAttributes()
         {
             Random rnd = new Random();
@@ -24,27 +26,40 @@ namespace RobotsVDinosaurs
             robotOneHealth = rnd.Next(30, 50);
             robotTwoHealth = rnd.Next(50, 70);
             robotThreeHealth = rnd.Next(80, 100);
-
-            robotOneAttack = rnd.Next(5, 10);
-            robotTwoAttack = rnd.Next(10, 15);
-            robotThreeAttack = rnd.Next(15, 25);
-
-
+            
             robotPowerLevel = 100;
+        }
 
+        public void setRobotWeapon()
+        {
+            Random rnd = new Random();
+            List<string> weapon = new List<string>{
+                "Particle Beam Cannon","Portal Ripper","Atomic Annie","Queller of the Sky",
+                "Corroded Six Shooter","Klingon Disrupter","Steampunk Blaster" };
 
+            int weaponOneInt = rnd.Next(weapon.Count);
+            weaponName1 = weapon[weaponOneInt];
+            robotOneAttack = rnd.Next(5, 10);
+
+            int weaponTwoInt = rnd.Next(weapon.Count);
+            weaponName2 = weapon[weaponTwoInt];
+            robotTwoAttack = rnd.Next(10,15);
+
+            int weaponThreeInt = rnd.Next(weapon.Count);
+            weaponName3 = weapon[weaponThreeInt];
+            robotThreeAttack = rnd.Next(10, 15);
 
         }
 
         public Fleet()
         {
-            Weapon wpn1 = new Weapon();
+            Weapon wpn1 = new Weapon(weaponName1, robotOneAttack);
             Robot r2d2 = new Robot("R2D2",robotOneHealth,robotPowerLevel,wpn1);
 
-            Weapon wpn2 = new Weapon();
+            Weapon wpn2 = new Weapon(weaponName2, robotTwoAttack);
             Robot bender = new Robot("Bender", robotTwoHealth, robotPowerLevel, wpn2);
 
-            Weapon wpn3 = new Weapon();
+            Weapon wpn3 = new Weapon(weaponName3, robotThreeAttack);
             Robot optimusPrime = new Robot("Optimus Prime", robotThreeHealth, robotPowerLevel, wpn3);
 
         }
