@@ -25,7 +25,7 @@ namespace RobotsVDinosaurs
         //Methods
         public void RobotAttack(Dinosaur dinosaur)
         {
-            dinosaur.dinosaurHealth -= robotPowerLevel;
+            dinosaur.dinosaurHealth -= robotWeapon.weaponAttackPower;
         }
 
     }

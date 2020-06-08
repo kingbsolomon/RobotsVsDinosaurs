@@ -52,7 +52,7 @@ namespace RobotsVDinosaurs
             robotList = new List<Robot>() 
             { 
                 new Robot("R2D2", robotOneHealth, robotPowerLevel, new Weapon(weaponName1, robotOneAttack)),
-                new Robot("Bender", robotTwoHealth, robotPowerLevel, new Weapon(weaponName2, robotTwoAttack)),
+                new Robot("C3P0", robotTwoHealth, robotPowerLevel, new Weapon(weaponName2, robotTwoAttack)),
                 new Robot("Optimus Prime", robotThreeHealth, robotPowerLevel, new Weapon(weaponName3, robotThreeAttack))
             };
         }
