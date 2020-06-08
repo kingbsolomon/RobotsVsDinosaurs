@@ -6,13 +6,14 @@ namespace RobotsVDinosaurs
 {
     class Herd
     {
-        public int dinosaurOneHealth;
-        public int dinosaurTwoHealth;
-        public int dinosaurThreeHealth;
-        public int dinosaurEnergyLevel;
-        public int dinosaurOneAttack;
-        public int dinosaurTwoAttack;
-        public int dinosaurThreeAttack;
+        int dinosaurOneHealth;
+        int dinosaurTwoHealth;
+        int dinosaurThreeHealth;
+        int dinosaurEnergyLevel;
+        int dinosaurOneAttack;
+        int dinosaurTwoAttack;
+        int dinosaurThreeAttack;
+        public List<Dinosaur> dinoList;
         
         public void setDinosaurAttributes()
         {
@@ -31,12 +32,26 @@ namespace RobotsVDinosaurs
 
         }
 
-        public Herd()
+        void createHerd()
         {
-            Dinosaur litteFoot = new Dinosaur("Littlefoot", dinosaurOneHealth, dinosaurEnergyLevel, dinosaurOneAttack);
+            dinoList = new List<Dinosaur>();
+
+            Dinosaur littleFoot = new Dinosaur("Littlefoot", dinosaurOneHealth, dinosaurEnergyLevel, dinosaurOneAttack);
             Dinosaur yoshi = new Dinosaur("Yoshi", dinosaurTwoHealth, dinosaurEnergyLevel, dinosaurTwoAttack);
             Dinosaur godzilla = new Dinosaur("Godzilla", dinosaurThreeHealth, dinosaurEnergyLevel, dinosaurThreeAttack);
 
+            dinoList.Add(littleFoot);
+            dinoList.Add(yoshi);
+            dinoList.Add(godzilla);
+
+
+        }
+
+        public Herd()
+        {
+            setDinosaurAttributes();
+            createHerd();
+            
         }
 
     }

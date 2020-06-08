@@ -9,16 +9,17 @@ namespace RobotsVDinosaurs
     class Fleet
     {
 
-        public int robotOneHealth;
-        public int robotTwoHealth;
-        public int robotThreeHealth;
-        public int robotPowerLevel;
-        public int robotOneAttack;
-        public int robotTwoAttack;
-        public int robotThreeAttack;
-        public string weaponName1;
-        public string weaponName2;
-        public string weaponName3;
+        int robotOneHealth;
+        int robotTwoHealth;
+        int robotThreeHealth;
+        int robotPowerLevel;
+        int robotOneAttack;
+        int robotTwoAttack;
+        int robotThreeAttack;
+        string weaponName1;
+        string weaponName2;
+        string weaponName3;
+        public List<Robot> robotList;
         public void setRobotAttributes()
         {
             Random rnd = new Random();
@@ -47,20 +48,32 @@ namespace RobotsVDinosaurs
 
             int weaponThreeInt = rnd.Next(weapon.Count);
             weaponName3 = weapon[weaponThreeInt];
-            robotThreeAttack = rnd.Next(10, 15);
+            robotThreeAttack = rnd.Next(15, 25);
 
         }
 
-        public Fleet()
+        public void createFleet()
         {
             Weapon wpn1 = new Weapon(weaponName1, robotOneAttack);
-            Robot r2d2 = new Robot("R2D2",robotOneHealth,robotPowerLevel,wpn1);
+            Robot r2d2 = new Robot("R2D2", robotOneHealth, robotPowerLevel, wpn1);
 
             Weapon wpn2 = new Weapon(weaponName2, robotTwoAttack);
             Robot bender = new Robot("Bender", robotTwoHealth, robotPowerLevel, wpn2);
 
             Weapon wpn3 = new Weapon(weaponName3, robotThreeAttack);
             Robot optimusPrime = new Robot("Optimus Prime", robotThreeHealth, robotPowerLevel, wpn3);
+
+            robotList = new List<Robot>();
+            robotList.Add(r2d2);
+            robotList.Add(bender);
+            robotList.Add(optimusPrime);
+        }
+
+        public Fleet()
+        {
+            setRobotAttributes();
+            setRobotWeapon();
+            createFleet();
 
         }
 
