@@ -6,5 +6,10 @@ namespace RobotsVDinosaurs
 {
     class Robot
     {
+        public string robotName;
+        public int robotHealth;
+        public int powerLevel;
+        public Weapon robotWeapon;
+
     }
 }
