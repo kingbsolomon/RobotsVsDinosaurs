@@ -14,10 +14,5 @@ namespace RobotsVDinosaurs
             this.weaponType = weaponType;
             this.weaponAttackPower = weaponAttackPower;
         }
-
-
-
-
-
     }
 }

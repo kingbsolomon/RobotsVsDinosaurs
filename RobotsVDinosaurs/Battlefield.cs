@@ -10,19 +10,15 @@ namespace RobotsVDinosaurs
         public Fleet robotTeam = new Fleet();
         public Herd dinoTeam = new Herd();
         int i = 0;
+        public string dinoAttack;
 
       public void LetsBattle()
         {
-
-        
+            dinoAttack = dinoTeam.dinoList[0].SelectDinoAttack();
 
             while ((robotTeam.robotList.Count > 0) && (dinoTeam.dinoList.Count > 0))
             
             {
-                //Console.Clear();
-
-             
-
                 PrintAttributes();
                 robotTeam.robotList[0].RobotAttack(dinoTeam.dinoList[0]);
                 robotTeam.robotList[0].RobotPowerLoss();
@@ -34,11 +30,9 @@ namespace RobotsVDinosaurs
 
                 Console.Write("Press Enter to Attack: \n");
                 Console.ReadLine();
-
             }
 
             DisplayGameWinner();
-            
         }
         
         public void PrintAttributes()
@@ -52,21 +46,27 @@ namespace RobotsVDinosaurs
             Console.WriteLine("Robot Power Level: {1} \t\t\t\t vs \t\t\t\t Dinosaur Energy: {2}", i + 1, robotTeam.robotList[0].robotPowerLevel,
                     dinoTeam.dinoList[0].dinosaurEnergy);
 
+            Console.WriteLine("Robot Weapon: {1} \t\t\t\t vs \t\t\t\t Dinosaur Attack: {2}", i + 1, robotTeam.robotList[0].robotWeapon.weaponType,
+                        dinoAttack);
+
             Console.WriteLine("Robot Attack Power {1} \t\t\t\t vs \t\t\t\t Dinosaur Attack Power {2}\n", i + 1, robotTeam.robotList[0].robotWeapon.weaponAttackPower,
                         dinoTeam.dinoList[0].dinosaurAttackPower);
         }
 
         public void CheckBattleWinner()
         {
-            if (robotTeam.robotList[0].robotHealth <= 0 || dinoTeam.dinoList[0].dinosaurHealth <= 0)
+            if ((robotTeam.robotList[0].robotHealth <= 0) || (dinoTeam.dinoList[0].dinosaurHealth <= 0))
             {
-
                 if (dinoTeam.dinoList[0].dinosaurHealth <= 0)
                 {
                     Console.WriteLine("Robot {0} Defeated Dinosaur {1}\n", robotTeam.robotList[0].robotName, dinoTeam.dinoList[0].dinosaurType);
                     dinoTeam.dinoList.RemoveAt(0);
                     i++;
-                    PrintAttributes();
+                    if (dinoTeam.dinoList.Count > 0)
+                    {
+                        dinoAttack = dinoTeam.dinoList[0].SelectDinoAttack();
+                    }
+                    //PrintAttributes();
                 }
                 
                 if (robotTeam.robotList[0].robotHealth <= 0)
@@ -75,9 +75,9 @@ namespace RobotsVDinosaurs
                     robotTeam.robotList.RemoveAt(0);
                     i++;
                 }
-                
             }
         }
+
         void DisplayGameWinner()
         {
             if(robotTeam.robotList.Count > dinoTeam.dinoList.Count)
