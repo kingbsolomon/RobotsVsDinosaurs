@@ -28,5 +28,10 @@ namespace RobotsVDinosaurs
             dinosaur.dinosaurHealth -= robotWeapon.weaponAttackPower;
         }
 
+        public void RobotPowerLoss(Robot robot)
+        {
+            robot.robotPowerLevel -= 10;
+        }
+
     }
 }
