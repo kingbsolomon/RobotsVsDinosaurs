@@ -27,9 +27,9 @@ namespace RobotsVDinosaurs
             robot.robotHealth -= dinosaurAttackPower;
         }
 
-        public void DinoEnergyLoss(Dinosaur dinosaur)
+        public void DinoEnergyLoss()
         {
-            dinosaur.dinosaurEnergy -= 10;
+            dinosaurEnergy -= 10;
         }
     }
 }

@@ -53,7 +53,7 @@ namespace RobotsVDinosaurs
             { 
                 new Robot("R2D2", robotOneHealth, robotPowerLevel, new Weapon(weaponName1, robotOneAttack)),
                 new Robot("C3P0", robotTwoHealth, robotPowerLevel, new Weapon(weaponName2, robotTwoAttack)),
-                new Robot("Optimus Prime", robotThreeHealth, robotPowerLevel, new Weapon(weaponName3, robotThreeAttack))
+                new Robot("Iron Giant", robotThreeHealth, robotPowerLevel, new Weapon(weaponName3, robotThreeAttack))
             };
         }
 
