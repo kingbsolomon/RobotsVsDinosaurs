@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Net.Http.Headers;
 using System.Text;
 
@@ -20,15 +21,21 @@ namespace RobotsVDinosaurs
             
             {
                 PrintAttributes();
+
                 robotTeam.robotList[0].RobotAttack(dinoTeam.dinoList[0]);
                 robotTeam.robotList[0].RobotPowerLoss();
                 CheckBattleWinner();
 
-                dinoTeam.dinoList[0].DinoAttack(robotTeam.robotList[0]);
-                dinoTeam.dinoList[0].DinoEnergyLoss();
-                CheckBattleWinner();
+                if ((robotTeam.robotList.Count > 0) && (dinoTeam.dinoList.Count > 0))
+                {
+                    dinoTeam.dinoList[0].DinoAttack(robotTeam.robotList[0]);
+                    dinoTeam.dinoList[0].DinoEnergyLoss();
+                    CheckBattleWinner();
+                }
 
-                Console.Write("Press Enter to Attack: \n");
+                    
+
+                Console.Write("Press Enter to Continue: \n");
                 Console.ReadLine();
             }
 
@@ -59,18 +66,23 @@ namespace RobotsVDinosaurs
             {
                 if (dinoTeam.dinoList[0].dinosaurHealth <= 0)
                 {
+                    Console.Clear();
+                    PrintAttributes();
                     Console.WriteLine("Robot {0} Defeated Dinosaur {1}\n", robotTeam.robotList[0].robotName, dinoTeam.dinoList[0].dinosaurType);
                     dinoTeam.dinoList.RemoveAt(0);
                     i++;
                     if (dinoTeam.dinoList.Count > 0)
                     {
                         dinoAttack = dinoTeam.dinoList[0].SelectDinoAttack();
+                        PrintAttributes();
                     }
                     //PrintAttributes();
                 }
                 
                 if (robotTeam.robotList[0].robotHealth <= 0)
                 {
+                    Console.Clear();
+                    PrintAttributes();
                     Console.WriteLine("Dinosaur {0} Defeated Robot {1}\n", dinoTeam.dinoList[0].dinosaurType, robotTeam.robotList[0].robotName);
                     robotTeam.robotList.RemoveAt(0);
                     i++;

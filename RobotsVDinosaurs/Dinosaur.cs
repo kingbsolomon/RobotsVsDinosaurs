@@ -39,9 +39,10 @@ namespace RobotsVDinosaurs
         public string SelectDinoAttack()
         {
             string attackSelection = "";
-            Console.WriteLine("Please Select Your Dinosaur Attack from the list of options: ");
-            Console.WriteLine("1: {0}, 2: {1} 3: {2} 4: {3} 5: {4}", dinoAttack[0], dinoAttack[1], dinoAttack[2], dinoAttack[3], dinoAttack[4]);
+            Console.WriteLine("Please Select Your Dinosaur Attack: ");
+            Console.Write("1: {0}, 2: {1} 3: {2} 4: {3} 5: {4}  ", dinoAttack[0], dinoAttack[1], dinoAttack[2], dinoAttack[3], dinoAttack[4]);
             string selectOption = Console.ReadLine();
+            Console.WriteLine("");
            
             switch (selectOption)
             {
@@ -66,8 +67,10 @@ namespace RobotsVDinosaurs
                     break;
 
                 default:
-                    Console.WriteLine("Please enter a valid choice");
+                    Console.WriteLine("Invalid Selection. Default attack Chosen.");
+                    attackSelection = dinoAttack[4];
                     break;
+                   
             }
 
             return attackSelection;
